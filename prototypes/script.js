@@ -79,3 +79,6 @@ Array.prototype.join = function() {
      console.log('Join called on ' , this)
      return this.joinOriginal(...arguments)
 }
+
+// Here we store the original join function in joinOriginal and
+// then we create our own join function in join
