@@ -43,5 +43,39 @@ console.log("===================================")
 
 let x = Object.create(Boolean.prototype)
 console.log(x.__proto__ == bool.__proto__)
-console.log(typeof x)
-console.log(typeof bool)
+console.log(typeof x)      //object
+console.log(typeof bool)   //boolean
+console.log("====================================")
+
+// It is not neccessary that if both have same proto, they will have same typeof...
+
+/*
+     Difference Between __proto__ and prototypes 
+     
+     Prototypes: Just like java,C++ classes are used as blueprints to create objects. Here in
+                 JavaScript, prototypes are the blueprints to create objects
+                 eg. String.prototype is the model or blueprint from which every single strings 
+                 are made
+    
+    __proto__  : This is the hidden pointer in every object which points to the model or blueprint 
+                 from which it was created
+*/
+
+console.log(str.charAt(4))
+console.log(typeof str.charAt)  //function
+let str2 = "fiehfieh"
+console.log(str.charAt == str2.charAt)  // true
+str.charAt = function() { return 'X'}   // Does Not Work
+
+String.prototype.charAt = function() { return 'X'}
+
+// String.prototype contains all default string function 
+// like charAt , indexOf , substring , slice etc
+console.log("=====================================")
+
+Array.prototype.joinOriginal = Array.prototype.join
+
+Array.prototype.join = function() {
+     console.log('Join called on ' , this)
+     return this.joinOriginal(...arguments)
+}
