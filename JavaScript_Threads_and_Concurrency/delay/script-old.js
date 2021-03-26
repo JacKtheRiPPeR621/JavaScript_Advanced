@@ -12,8 +12,10 @@ btnCount.onclick = function() {
 }
 
 btnWait.onclick = function() {
-    divState.textContent = 'Waiting'
+    divState.textContent = 'Waiting'    // Paint in HTML will occur after this function will complete
+                                        // When the call stack gets empty  ... This improves efficeincy of website 
     let start = Date.now()
-    while(Date.now() <= start+5000){ /* do nothing */ }
+    while(Date.now() <= start+5000){ /* do nothing */ }   //Since this is a synchronous function, for five seconds
+                                                          //everything in website gets blocked
     divState.textContent = 'Done'
 }
